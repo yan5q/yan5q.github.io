@@ -1,616 +1,980 @@
-<!doctype html>
-<html lang="cs">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Cyber doba</title>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-        <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-        <style>
-            body {
-                /* pouzil jsem macos color picker pro presne barvicky */
-                background-color: #0c1117;
-                color: #fff;
-                font-family: "Inter", sans-serif;
-            }
-            .logo-text {
-                font-size: 32px;
-                font-weight: 600;
-                color: #59a6ff;
-            }
-            nav {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                align-items: center;
-                background-color: #161b22;
-                height: 7vh;
-                border-bottom: 1px solid #30363d;
-            }
-            .logo {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                gap: 10px;
-                margin-left: 20vw;
-            }
-            .logo-image {
-                width: 70px;
-                height: 70px;
-            }
-            .nav-links {
-                display: flex;
-                flex-direction: row;
-                justify-content: center;
-                align-items: center;
-                gap: 20px;
-                color: gray;
-                margin-right: 20vw;
-                font-size: 14px;
-            }
-            a {
-                color: gray;
-                text-decoration: none;
-            }
-            .pripojit-se-button {
-                background-color: #238636;
-                color: #fff;
-                padding: 10px 20px;
-                border: none;
-            }
-            .horni-veci {
-                display: flex;
-                flex-direction: row;
-            }
-            .preziti {
-                background-color: #23272f;
-                color: lightgray;
-                width: 15vw;
-                justify-content: center;
-                text-align: center;
-            }
-            .kyberzbrane {
-                background-color: #2c3139;
-                color: lightgray;
-                width: 15vw;
-                justify-content: center;
-                text-align: center;
-            }
-            .sitovevalky {
-                background-color: #353b44;
-                color: lightgray;
-                width: 15vw;
-                justify-content: center;
-                text-align: center;
-            }
-            .digitalniutiopie {
-                background-color: #3b434b;
-                color: lightgray;
-                width: 15vw;
-                justify-content: center;
-                text-align: center;
-            }
-            .cyberdoba-image {
-                width: 100%;
-            }
-            .img-footer {
-                text-align: right;
-                align-items: right;
-                font-size: 12px;
-                color: gray;
-                background-color: #161b22;
-                padding: 1px 15px;
-            }
-            main {
-                margin-left: 20vw;
-                margin-right: 20vw;
-            }
-            footer {
-                display: flex;
-                flex-direction: row;
-                background-color: #0d1118;
-                margin-left: 20vw;
-                margin-right: 20vw;
-                justify-content: space-between;
-                align-items: flex-start;
-                gap: 9vw;
-                padding-left: 5vw;
-                padding-right: 5vw;
-                padding-top: 40px;
-                padding-bottom: 40px;
-            }
-            .footer-onas {
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                flex: 1;
-            }
-            .footer-onas h2 {
-                font-size: 1rem;
-                font-weight: bold;
-                color: white;
-                margin-bottom: 10px;
-                margin-top: 0;
-            }
-            .footer-onas p {
-                font-size: 0.9rem;
-                color: gray;
-                margin-bottom: 0px;
-                margin-top: 0;
-                line-height: 1.5;
-            }
-            .footer-kontakt {
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                flex: 1;
-            }
-            .footer-kontakt h2 {
-                font-size: 1rem;
-                font-weight: bold;
-                color: white;
-                margin-bottom: 10px;
-                margin-top: 0;
-            }
-            .footer-kontakt p {
-                font-size: 0.9rem;
-                color: gray;
-                margin-bottom: 5px;
-                margin-top: 0;
-            }
-            .footer-info {
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                flex: 1;
-                font-size: 0.9rem;
-                color: gray;
-            }
-            .footer-info h2 {
-                font-size: 1rem;
-                font-weight: bold;
-                color: white;
-                margin-bottom: 10px;
-                margin-top: 0;
-            }
-            .footer-info-item {
-                font-size: 0.9rem;
-                color: lightblue;
-                margin-bottom: 5px;
-                margin-top: 0;
-                font-weight: bold;
-            }
-            .footer-info p:last-child {
-                margin-top: 10px;
-                margin-bottom: 0;
-            }
-            .quote {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                background-color: #14181f;
-            }
-            .quote-text {
-                font-size: 24px;
-                font-weight: bold;
-                color: #59a6ff;
-                margin-bottom: 10px;
-                margin-top: 3vh;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-            }
-            .quote-author {
-                font-size: 16px;
-                color: gray;
-                margin-bottom: 3vh;
-                margin-top: 0;
-                justify-content: end;
-                align-items: end;
-                text-align: right;
-                margin-right: 13vw;
-            }
-            .digitalninoc {
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                align-items: center;
-                text-align: center;
-                color: gray;
-                padding-left: 5vw;
-                padding-right: 5vw;
-                background-color: #14181f;
-            }
-            .digitalninoc h1 {
-                color: #59a6ff;
-                text-align: center;
-                margin-bottom: 0;
-            }
-            .digitalninoc hr {
-                width: 10vw;
-                color: gray;
-            }
-            .feature-cards {
-                display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                gap: 10px;
-                padding: 40px 0;
-                background-color: #161b22;
-                padding-left: 5vw;
-                padding-right: 5vw;
-            }
-            .feature-card {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                padding: 20px;
-                border: 2px solid;
-                flex: 1;
-                aspect-ratio: 1;
-                min-height: 0;
-            }
-            .feature-card.blue {
-                border-color: #59a6ff;
-            }
-            .feature-card.green {
-                border-color: #3fb950;
-            }
-            .feature-icon {
-                width: 25px;
-                height: 25px;
-                min-width: 25px;
-                min-height: 25px;
-                border-radius: 50%;
-                border: 2px solid;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                margin-bottom: 20px;
-                font-size: 28px;
-            }
-            .feature-card.blue .feature-icon {
-                border-color: #59a6ff;
-                color: #59a6ff;
-            }
-            .feature-card.green .feature-icon {
-                border-color: #3fb950;
-                color: #3fb950;
-            }
-            .feature-title {
-                font-size: 1.2rem;
-                font-weight: bold;
-                margin-bottom: 15px;
-                margin-top: 0;
-                text-align: center;
-            }
-            .feature-card.blue .feature-title {
-                color: #59a6ff;
-            }
-            .feature-card.green .feature-title {
-                color: #3fb950;
-            }
-            .feature-description {
-                font-size: 0.95rem;
-                line-height: 1.4;
-                margin: 0;
-                text-align: center;
-            }
-            .feature-card.blue .feature-description {
-                color: #59a6ff;
-            }
-            .feature-card.green .feature-description {
-                color: #3fb950;
-            }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>YAN5Q</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap');
 
-            @media (max-width: 1000px) {
-                .logo {
-                    margin-left: 5vw;
-                }
-                .nav-links {
-                    margin-right: 5vw;
-                    gap: 15px;
-                    font-size: 13px;
-                }
-                main {
-                    margin-left: 5vw;
-                    margin-right: 5vw;
-                }
-                footer {
-                    margin-left: 5vw;
-                    margin-right: 5vw;
-                }
-                .feature-cards {
-                    flex-wrap: wrap;
-                }
-                .feature-card {
-                    flex: 1 1 calc(50% - 5px);
-                    min-width: calc(50% - 5px);
-                }
-            }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-            @media (max-width: 750px) {
-                nav {
-                    flex-wrap: wrap;
-                    height: auto;
-                    min-height: 7vh;
-                    padding: 10px 0;
-                }
-                .logo {
-                    margin-left: 5vw;
-                    width: 100%;
-                    justify-content: flex-start;
-                }
-                .logo-image {
-                    width: 50px;
-                    height: 50px;
-                }
-                .logo-text {
-                    font-size: 24px;
-                }
-                .nav-links {
-                    margin-right: 5vw;
-                    margin-left: 5vw;
-                    width: calc(100% - 10vw);
-                    flex-wrap: wrap;
-                    gap: 10px;
-                    margin-top: 10px;
-                }
-                .nav-links a {
-                    font-size: 12px;
-                }
-                .pripojit-se-button {
-                    padding: 8px 16px;
-                    font-size: 12px;
-                }
-                .horni-veci {
-                    flex-direction: column;
-                }
-                .preziti,
-                .kyberzbrane,
-                .sitovevalky,
-                .digitalniutiopie {
-                    width: 100%;
-                    padding: 15px 0;
-                }
-                main {
-                    margin-left: 0;
-                    margin-right: 0;
-                }
-                .quote {
-                    padding-left: 5vw;
-                    padding-right: 5vw;
-                }
-                .quote-author {
-                    margin-right: 0;
-                }
-                .img-footer {
-                    padding-left: 5vw;
-                    padding-right: 5vw;
-                }
-                .feature-cards {
-                    flex-direction: column;
-                    gap: 20px;
-                    padding-left: 5vw;
-                    padding-right: 5vw;
-                }
-                .feature-card {
-                    width: 100%;
-                    flex: 1 1 100%;
-                    aspect-ratio: auto;
-                    min-height: 220px;
-                    max-width: 100%;
-                }
-                .feature-title {
-                    font-size: 1.1rem;
-                }
-                .feature-description {
-                    font-size: 0.9rem;
-                    line-height: 1.5;
-                }
-                footer {
-                    flex-direction: column;
-                    margin-left: 5vw;
-                    margin-right: 5vw;
-                    gap: 30px;
-                    padding-left: 0;
-                    padding-right: 0;
-                }
-                .footer-onas,
-                .footer-kontakt,
-                .footer-info {
-                    width: 100%;
-                }
-            }
+    :root {
+      --bg: #f5f0e8;
+      --text: #0f0f0f;
+      --border: #0f0f0f;
+      --bw: 3px;
+      --shadow: 5px 5px 0px #0f0f0f;
+      --shadow-lg: 8px 8px 0px #0f0f0f;
+      --shadow-xl: 12px 12px 0px #0f0f0f;
+      --yellow: #f5e642;
+      --pink: #ff3f77;
+      --blue: #2d6fff;
+      --green: #00c97a;
+      --orange: #ff7a1a;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
 
-            @media (max-width: 450px) {
-                .logo {
-                    margin-left: 3vw;
-                }
-                .logo-text {
-                    font-size: 20px;
-                }
-                .logo-image {
-                    width: 40px;
-                    height: 40px;
-                }
-                .nav-links {
-                    margin-left: 3vw;
-                    margin-right: 3vw;
-                    width: calc(100% - 6vw);
-                    flex-direction: column;
-                    align-items: flex-start;
-                    gap: 8px;
-                }
-                .nav-links a {
-                    font-size: 11px;
-                }
-                .pripojit-se-button {
-                    width: 100%;
-                    padding: 10px;
-                }
-                .quote-text {
-                    font-size: 18px;
-                    padding: 0 3vw;
-                }
-                .quote {
-                    padding-left: 3vw;
-                    padding-right: 3vw;
-                }
-                .quote-author {
-                    margin-right: 0;
-                    font-size: 14px;
-                }
-                .img-footer {
-                    padding-left: 3vw;
-                    padding-right: 3vw;
-                }
-                .digitalninoc {
-                    padding-left: 3vw;
-                    padding-right: 3vw;
-                }
-                .digitalninoc h1 {
-                    font-size: 24px;
-                }
-                .feature-cards {
-                    padding-left: 3vw;
-                    padding-right: 3vw;
-                    gap: 15px;
-                }
-                .feature-card {
-                    min-height: 200px;
-                    padding: 15px;
-                }
-                .feature-icon {
-                    width: 20px;
-                    height: 20px;
-                    min-width: 20px;
-                    min-height: 20px;
-                    font-size: 24px;
-                    margin-bottom: 15px;
-                }
-                .feature-title {
-                    font-size: 1rem;
-                    margin-bottom: 12px;
-                }
-                .feature-description {
-                    font-size: 0.85rem;
-                    line-height: 1.5;
-                }
-                footer {
-                    margin-left: 3vw;
-                    margin-right: 3vw;
-                    padding-top: 30px;
-                    padding-bottom: 30px;
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <nav>
-            <div class="logo">
-                <img src="https://api.ssps.cajthaml.eu/file/69335fbb6945137e5671b038" alt="logo" class="logo-image" />
-                <p class="logo-text">CyberCorp</p>
-            </div>
+    html, body {
+      height: 100%; overflow: hidden;
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
 
-            <div class="nav-links">
-                <a href="#">Zpravy z podsveti</a>
-                <a href="#">Kybernetika</a>
-                <a href="#">Hackerska elita</a>
-                <a href="#">Casto hackovane otazky</a>
-                <button class="pripojit-se-button">PRIPOJIT SE</button>
+    /* ========= CURSOR ========= */
+    .cursor-dot {
+      position: fixed; pointer-events: none; z-index: 9999;
+      width: 12px; height: 12px;
+      background: var(--pink);
+      border: 2px solid var(--text);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.2s, height 0.2s, background 0.2s;
+      mix-blend-mode: normal;
+    }
+    .cursor-dot.big {
+      width: 48px; height: 48px;
+      background: var(--yellow);
+      border-radius: 4px;
+      transform: translate(-50%, -50%) rotate(12deg);
+    }
+    body { cursor: none; }
+    a, button, [data-nav], .proj-row { cursor: none; }
+    @media (pointer: coarse) { .cursor-dot { display: none; } body { cursor: auto; } }
+
+    /* ========= NAV ========= */
+    nav {
+      position: fixed; top: 0; width: 100%;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 20px 32px;
+      z-index: 300;
+      border-bottom: var(--bw) solid var(--border);
+      background: var(--bg);
+    }
+
+    .logo {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700; font-size: 1rem;
+      letter-spacing: -0.5px;
+      cursor: none;
+      background: var(--text);
+      color: var(--bg);
+      padding: 6px 14px;
+      display: inline-block;
+      transform: rotate(-1.5deg);
+      border: var(--bw) solid var(--border);
+      box-shadow: var(--shadow);
+      transition: transform 0.25s var(--ease-bounce), box-shadow 0.25s;
+    }
+    .logo:hover {
+      transform: rotate(0deg) scale(1.04);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .nav-right { display: flex; align-items: center; gap: 10px; }
+
+    .page-indicator {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem; color: var(--text);
+      border: var(--bw) solid var(--border);
+      padding: 5px 10px;
+      background: var(--yellow);
+    }
+
+    .theme-toggle {
+      background: var(--bg); border: var(--bw) solid var(--border);
+      color: var(--text); cursor: none;
+      width: 38px; height: 38px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s var(--ease-bounce), box-shadow 0.2s;
+    }
+    .theme-toggle:hover { transform: rotate(20deg) scale(1.1); box-shadow: var(--shadow-lg); }
+
+    .hamburger {
+      background: var(--blue); border: var(--bw) solid var(--border);
+      color: #fff; cursor: none;
+      padding: 8px 18px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase;
+      display: flex; align-items: center; gap: 10px;
+      box-shadow: var(--shadow);
+      transition: transform 0.2s var(--ease-bounce), box-shadow 0.2s, background 0.2s;
+    }
+    .hamburger:hover { transform: translate(-2px, -2px); box-shadow: var(--shadow-lg); }
+    .hamburger.active { background: var(--pink); }
+    .hlines { display: flex; flex-direction: column; gap: 4px; width: 16px; }
+    .hlines span {
+      display: block; height: 2px; background: currentColor;
+      transition: transform 0.35s var(--ease), opacity 0.25s;
+    }
+    .hamburger.active .hlines span:nth-child(1) { transform: rotate(45deg) translate(4px, 4px); }
+    .hamburger.active .hlines span:nth-child(2) { opacity: 0; }
+    .hamburger.active .hlines span:nth-child(3) { transform: rotate(-45deg) translate(4px, -4px); }
+
+    /* ========= MENU OVERLAY ========= */
+    .menu-overlay {
+      position: fixed; inset: 0;
+      background: var(--yellow);
+      z-index: 299;
+      border-bottom: var(--bw) solid var(--border);
+      display: flex; flex-direction: column;
+      justify-content: center;
+      padding: 0 48px;
+      clip-path: inset(0 0 100% 0);
+      transition: clip-path 0.65s var(--ease);
+    }
+    .menu-overlay.open { clip-path: inset(0 0 0% 0); }
+
+    .menu-link {
+      font-size: clamp(3rem, 8vw, 6.5rem);
+      font-weight: 700; color: var(--text);
+      text-decoration: none; letter-spacing: -3px;
+      line-height: 1.05;
+      display: block; cursor: none;
+      transform: translateX(-60px); opacity: 0;
+      transition: transform 0.5s var(--ease), opacity 0.4s, color 0.15s, letter-spacing 0.3s;
+      border-bottom: var(--bw) solid transparent;
+    }
+    .menu-overlay.open .menu-link { transform: translateX(0); opacity: 1; }
+    .menu-overlay.open .menu-link:nth-child(1) { transition-delay: 0.07s; }
+    .menu-overlay.open .menu-link:nth-child(2) { transition-delay: 0.13s; }
+    .menu-overlay.open .menu-link:nth-child(3) { transition-delay: 0.19s; }
+    .menu-overlay.open .menu-link:nth-child(4) { transition-delay: 0.25s; }
+    .menu-link:hover { color: var(--pink); letter-spacing: -1px; }
+
+    .menu-footer {
+      position: absolute; bottom: 32px; left: 48px; right: 48px;
+      display: flex; gap: 16px;
+    }
+    .menu-footer a {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase;
+      color: var(--text); text-decoration: none;
+      border: var(--bw) solid var(--border);
+      padding: 6px 14px;
+      background: var(--bg);
+      box-shadow: var(--shadow);
+      opacity: 0; transform: translateY(10px);
+      transition: opacity 0.3s, transform 0.3s, background 0.2s, box-shadow 0.2s;
+    }
+    .menu-overlay.open .menu-footer a { opacity: 1; transform: translateY(0); }
+    .menu-overlay.open .menu-footer a:nth-child(1) { transition-delay: 0.33s; }
+    .menu-overlay.open .menu-footer a:nth-child(2) { transition-delay: 0.38s; }
+    .menu-overlay.open .menu-footer a:nth-child(3) { transition-delay: 0.43s; }
+    .menu-footer a:hover { background: var(--pink); color: #fff; box-shadow: var(--shadow-lg); transform: translate(-2px, -2px); }
+
+    /* ========= PAGE TRANSITION ========= */
+    .curtain {
+      position: fixed; inset: 0; z-index: 400;
+      background: var(--pink);
+      clip-path: inset(100% 0 0 0);
+      pointer-events: none;
+    }
+    .curtain.in  { animation: cIn  0.48s var(--ease) forwards; }
+    .curtain.out { animation: cOut 0.48s var(--ease) forwards; }
+    @keyframes cIn  { from { clip-path: inset(100% 0 0 0); } to { clip-path: inset(0% 0 0 0); } }
+    @keyframes cOut { from { clip-path: inset(0% 0 0 0); } to { clip-path: inset(0% 0 100% 0); } }
+
+    /* ========= PAGES ========= */
+    .page {
+      position: fixed; inset: 0;
+      overflow-y: auto; overflow-x: hidden;
+      opacity: 0; visibility: hidden;
+    }
+    .page.active { opacity: 1; visibility: visible; }
+
+    .page-inner {
+      min-height: 100vh;
+      padding: 90px 32px 60px;
+      max-width: 1160px; margin: 0 auto;
+      display: flex; flex-direction: column;
+      justify-content: center;
+    }
+
+    .anim { opacity: 0; transform: translateY(24px); }
+    .page.active .anim { animation: fadeUp 0.65s var(--ease) forwards; }
+    .page.active .anim:nth-child(1) { animation-delay: 0.05s; }
+    .page.active .anim:nth-child(2) { animation-delay: 0.12s; }
+    .page.active .anim:nth-child(3) { animation-delay: 0.19s; }
+    .page.active .anim:nth-child(4) { animation-delay: 0.26s; }
+    .page.active .anim:nth-child(5) { animation-delay: 0.33s; }
+    .page.active .anim:nth-child(6) { animation-delay: 0.40s; }
+    .page.active .anim:nth-child(7) { animation-delay: 0.47s; }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========= HOME ========= */
+    #page-home { overflow: hidden; }
+
+    .home-inner {
+      position: relative;
+      display: flex; flex-direction: column;
+    }
+
+    /* Big sticker tags */
+    .sticker {
+      position: absolute;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 1px; text-transform: uppercase;
+      padding: 7px 14px;
+      border: var(--bw) solid var(--border);
+      box-shadow: var(--shadow);
+      pointer-events: none;
+    }
+    .sticker-1 {
+      background: var(--green); color: var(--text);
+      top: 10px; right: 60px;
+      transform: rotate(3.5deg);
+      animation: wobble1 4s ease-in-out infinite;
+    }
+    .sticker-2 {
+      background: var(--blue); color: #fff;
+      top: 60px; right: 20px;
+      transform: rotate(-2.5deg);
+      animation: wobble2 5s ease-in-out infinite;
+    }
+    .sticker-3 {
+      background: var(--orange); color: var(--text);
+      bottom: 120px; right: 40px;
+      transform: rotate(2deg);
+      animation: wobble1 4.5s ease-in-out infinite 0.5s;
+    }
+    @keyframes wobble1 {
+      0%,100% { transform: rotate(3.5deg) translateY(0); }
+      50% { transform: rotate(3.5deg) translateY(-5px); }
+    }
+    @keyframes wobble2 {
+      0%,100% { transform: rotate(-2.5deg) translateY(0); }
+      50% { transform: rotate(-2.5deg) translateY(-6px); }
+    }
+
+    .hero-eyebrow {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px;
+    }
+    .eyebrow-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+      background: var(--pink); color: #fff;
+      padding: 5px 12px;
+      border: var(--bw) solid var(--border);
+      box-shadow: var(--shadow);
+      transform: rotate(-0.8deg);
+      display: inline-block;
+    }
+    .eyebrow-line {
+      flex: 1; height: var(--bw); background: var(--border);
+      max-width: 120px;
+    }
+
+    .hero-title {
+      font-size: clamp(4rem, 13vw, 10.5rem);
+      font-weight: 700;
+      letter-spacing: -5px;
+      line-height: 0.85;
+      position: relative;
+    }
+    .hero-title .line { display: block; }
+    .hero-title .line-2 {
+      color: var(--bg);
+      -webkit-text-stroke: var(--bw) var(--text);
+      padding-left: 20px;
+    }
+    .hero-title .underline-word {
+      position: relative; display: inline-block;
+    }
+    .hero-title .underline-word::after {
+      content: '';
+      position: absolute; bottom: 4px; left: 0; right: 0;
+      height: 6px;
+      background: var(--yellow);
+      z-index: -1;
+      transform: rotate(-0.5deg);
+    }
+
+    .hero-bottom {
+      display: flex; align-items: flex-end; justify-content: space-between;
+      margin-top: 36px; gap: 32px;
+      flex-wrap: wrap;
+    }
+    .hero-desc {
+      font-size: 1rem; line-height: 1.7; max-width: 360px;
+      border-left: var(--bw) solid var(--border);
+      padding-left: 20px;
+    }
+
+    .hero-ctas { display: flex; flex-direction: column; gap: 12px; align-items: flex-end; }
+
+    .btn-brutal {
+      display: inline-flex; align-items: center; gap: 10px;
+      padding: 14px 28px;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.5px;
+      text-transform: uppercase; cursor: none;
+      border: var(--bw) solid var(--border);
+      box-shadow: var(--shadow);
+      transition: transform 0.18s var(--ease-bounce), box-shadow 0.18s;
+      background: none;
+      text-decoration: none; color: inherit;
+    }
+    .btn-brutal:hover { transform: translate(-3px, -3px); box-shadow: var(--shadow-lg); }
+    .btn-brutal:active { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--border); }
+
+    .btn-fill { background: var(--text); color: var(--bg); }
+    .btn-yellow { background: var(--yellow); color: var(--text); }
+
+    /* Marquee */
+    .marquee-strip {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      overflow: hidden;
+      border-top: var(--bw) solid var(--border);
+      height: 40px; background: var(--text);
+      display: flex; align-items: center;
+    }
+    .marquee-track {
+      display: flex; align-items: center;
+      animation: marquee 24s linear infinite;
+      white-space: nowrap;
+    }
+    .marquee-track span {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--bg); padding: 0 24px;
+    }
+    .marquee-track .sep { color: var(--yellow); padding: 0 4px; }
+    @keyframes marquee {
+      from { transform: translateX(0); }
+      to   { transform: translateX(-50%); }
+    }
+
+    /* Home bottom meta */
+    .home-meta {
+      position: absolute; bottom: 52px; left: 32px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase;
+      line-height: 1.9; color: var(--text);
+      opacity: 0.55;
+    }
+
+    /* ========= SECTION SHARED ========= */
+    .section-tag {
+      display: inline-block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 2px; text-transform: uppercase;
+      padding: 6px 14px;
+      border: var(--bw) solid var(--border);
+      background: var(--yellow);
+      box-shadow: var(--shadow);
+      margin-bottom: 28px;
+      transform: rotate(-0.8deg);
+    }
+
+    .section-heading {
+      font-size: clamp(2.2rem, 5vw, 4rem);
+      font-weight: 700; letter-spacing: -2.5px;
+      line-height: 1.0; margin-bottom: 44px;
+    }
+
+    /* ========= WORK PAGE ========= */
+    .projects-list { display: flex; flex-direction: column; gap: 0; }
+    .proj-row {
+      display: grid;
+      grid-template-columns: 52px 1fr auto;
+      align-items: center; gap: 20px;
+      padding: 20px 16px;
+      border: var(--bw) solid var(--border);
+      margin-bottom: -3px;
+      cursor: none;
+      background: var(--bg);
+      transition: transform 0.22s var(--ease-bounce), box-shadow 0.22s, background 0.18s, z-index 0s;
+      position: relative; z-index: 0;
+    }
+    .proj-row:hover {
+      background: var(--yellow);
+      transform: translate(-4px, -4px) rotate(-0.4deg);
+      box-shadow: var(--shadow-lg);
+      z-index: 2;
+    }
+    .proj-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 1px;
+      opacity: 0.45;
+    }
+    .proj-title {
+      font-size: clamp(1.1rem, 2vw, 1.5rem);
+      font-weight: 700; letter-spacing: -0.6px;
+    }
+    .proj-meta {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem; opacity: 0.5;
+      margin-top: 3px; letter-spacing: 0.5px;
+    }
+    .proj-tags { display: flex; gap: 8px; align-items: center; }
+    .proj-tag {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem; letter-spacing: 1px; text-transform: uppercase;
+      padding: 4px 10px;
+      border: 2px solid var(--border);
+      background: var(--bg);
+    }
+    .proj-row:hover .proj-tag { background: var(--text); color: var(--bg); }
+    .proj-arrow {
+      font-size: 1.1rem; font-weight: 700;
+      opacity: 0; transform: translate(-6px, 6px);
+      transition: opacity 0.2s, transform 0.2s var(--ease);
+    }
+    .proj-row:hover .proj-arrow { opacity: 1; transform: translate(0, 0); }
+
+    /* ========= ABOUT PAGE ========= */
+    .about-layout {
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px; align-items: start;
+    }
+    .about-text {
+      font-size: 1rem; line-height: 1.75;
+    }
+    .about-text p + p { margin-top: 16px; }
+
+    /* Tilted card */
+    .tilt-card {
+      border: var(--bw) solid var(--border);
+      padding: 28px;
+      box-shadow: var(--shadow-lg);
+      background: var(--bg);
+      transform: rotate(1.2deg);
+      transition: transform 0.3s var(--ease-bounce), box-shadow 0.3s;
+    }
+    .tilt-card:hover { transform: rotate(0deg); box-shadow: var(--shadow-xl); }
+
+    .card-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase;
+      opacity: 0.45; margin-bottom: 16px;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .card-label::after { content: ''; flex: 1; height: 2px; background: var(--border); }
+
+    .skills-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 24px; }
+    .skill-chip {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase;
+      padding: 6px 12px;
+      border: 2px solid var(--border);
+      background: var(--bg);
+      box-shadow: 3px 3px 0 var(--border);
+      transition: transform 0.18s var(--ease-bounce), box-shadow 0.18s, background 0.15s;
+    }
+    .skill-chip:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 var(--border); background: var(--yellow); }
+
+    .stat-list { display: flex; flex-direction: column; gap: 10px; }
+    .stat-row {
+      display: flex; justify-content: space-between; align-items: baseline;
+      border-bottom: 2px dashed var(--border);
+      padding-bottom: 10px; font-size: 0.8rem;
+    }
+    .stat-key { font-family: 'Space Mono', monospace; font-size: 0.6rem; opacity: 0.5; letter-spacing: 1px; }
+    .stat-val { font-weight: 700; }
+
+    /* Second tilted card */
+    .tilt-card-2 {
+      margin-top: 24px;
+      transform: rotate(-1deg);
+      background: var(--blue); color: #fff;
+      border-color: var(--border);
+    }
+    .tilt-card-2 .card-label { color: rgba(255,255,255,0.6); }
+    .tilt-card-2 .card-label::after { background: rgba(255,255,255,0.25); }
+    .tilt-card-2:hover { transform: rotate(0deg); }
+    .availability-text {
+      font-size: 1.3rem; font-weight: 700; letter-spacing: -0.5px;
+    }
+    .avail-dot {
+      display: inline-block;
+      width: 10px; height: 10px; border-radius: 50%;
+      background: var(--green);
+      border: 2px solid #fff;
+      margin-right: 8px;
+      animation: blink 1.8s ease-in-out infinite;
+      vertical-align: middle;
+    }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+
+    /* ========= CONTACT PAGE ========= */
+    .contact-big {
+      font-size: clamp(3rem, 9vw, 7.5rem);
+      font-weight: 700; letter-spacing: -4px;
+      line-height: 0.88; margin-bottom: 48px;
+    }
+    .contact-big em {
+      font-style: normal;
+      -webkit-text-stroke: var(--bw) var(--text);
+      color: transparent;
+    }
+
+    .contact-cards { display: flex; flex-direction: column; gap: 16px; max-width: 560px; }
+    .contact-card {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px;
+      border: var(--bw) solid var(--border);
+      background: var(--bg);
+      box-shadow: var(--shadow);
+      text-decoration: none; color: var(--text);
+      transition: transform 0.2s var(--ease-bounce), box-shadow 0.2s, background 0.15s;
+    }
+    .contact-card:hover { transform: translate(-4px, -4px); box-shadow: var(--shadow-lg); background: var(--yellow); }
+    .contact-card-left { display: flex; flex-direction: column; gap: 3px; }
+    .contact-card-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.55rem; letter-spacing: 2px; text-transform: uppercase; opacity: 0.4;
+    }
+    .contact-card-value { font-size: 1.05rem; font-weight: 700; }
+    .contact-arrow { font-size: 1.3rem; font-weight: 700; }
+
+    .social-row { display: flex; gap: 0; margin-top: 32px; flex-wrap: wrap; }
+    .social-btn {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 1px; text-transform: uppercase;
+      padding: 12px 20px;
+      border: var(--bw) solid var(--border);
+      margin-right: -3px;
+      background: var(--bg); color: var(--text);
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: transform 0.18s var(--ease-bounce), box-shadow 0.18s, background 0.15s, color 0.15s, z-index 0s;
+      position: relative; z-index: 0;
+    }
+    .social-btn:hover {
+      background: var(--text); color: var(--bg);
+      transform: translate(-3px, -3px) rotate(-1deg);
+      box-shadow: var(--shadow-lg); z-index: 2;
+    }
+
+    /* ========= PAGE FOOTER ========= */
+    .page-footer {
+      margin-top: auto; padding-top: 36px;
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: var(--bw) solid var(--border);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 1px; text-transform: uppercase;
+    }
+    .footer-links { display: flex; gap: 20px; }
+    .footer-links a { color: var(--text); text-decoration: none; }
+    .footer-links a:hover { text-decoration: underline; }
+
+    /* ========= RESPONSIVE ========= */
+    @media (max-width: 768px) {
+      nav { padding: 16px 20px; }
+      .page-inner { padding: 80px 20px 48px; }
+      .sticker { display: none; }
+      .hero-bottom { flex-direction: column; align-items: flex-start; }
+      .hero-ctas { align-items: flex-start; }
+      .about-layout { grid-template-columns: 1fr; }
+      .proj-row { grid-template-columns: 40px 1fr; }
+      .proj-tags { display: none; }
+      .home-meta { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <!-- Curtain -->
+  <div class="curtain" id="curtain"></div>
+
+  <!-- Menu overlay -->
+  <div class="menu-overlay" id="menuOverlay">
+    <div class="menu-link" data-nav="home">Home</div>
+    <div class="menu-link" data-nav="work">Work</div>
+    <div class="menu-link" data-nav="about">About</div>
+    <div class="menu-link" data-nav="contact">Contact</div>
+    <div class="menu-footer">
+      <a href="#" target="_blank">GitHub</a>
+      <a href="#" target="_blank">Twitter</a>
+      <a href="#" target="_blank">LinkedIn</a>
+    </div>
+  </div>
+
+  <!-- Nav -->
+  <nav>
+    <div class="logo" data-nav="home">YAN5Q ✦</div>
+    <div class="nav-right">
+      <span class="page-indicator" id="pageIndicator">01/04</span>
+      <button class="theme-toggle" id="themeToggle">☽</button>
+      <button class="hamburger" id="hamburger">
+        <span>Menu</span>
+        <div class="hlines"><span></span><span></span><span></span></div>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ======== HOME ======== -->
+  <div class="page active" id="page-home">
+    <div class="page-inner" style="justify-content: center; padding-bottom: 100px;">
+      <div class="home-inner">
+
+        <!-- Floating stickers -->
+        <div class="sticker sticker-1">✦ Available</div>
+        <div class="sticker sticker-2">Prague, CZ</div>
+        <div class="sticker sticker-3">2026 ↗</div>
+
+        <div class="hero-eyebrow anim">
+          <span class="eyebrow-tag">Developer & Designer</span>
+          <div class="eyebrow-line"></div>
+        </div>
+
+        <h1 class="hero-title anim">
+          <span class="line">Building</span>
+          <span class="line line-2"><span class="underline-word">cool</span> stuff</span>
+          <span class="line">for web.</span>
+        </h1>
+
+        <div class="hero-bottom">
+          <p class="hero-desc anim">
+            Precise, performant, and visually considered.
+            I care about motion, craft, and the details that matter.
+          </p>
+          <div class="hero-ctas anim">
+            <button class="btn-brutal btn-fill" data-nav="work">
+              See my work →
+            </button>
+            <button class="btn-brutal btn-yellow" data-nav="contact">
+              Let's talk ✦
+            </button>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="home-meta anim">
+        Portfolio / 2026<br>
+        Navigate with arrow keys
+      </div>
+    </div>
+
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <span>React</span><span class="sep">✦</span>
+        <span>TypeScript</span><span class="sep">✦</span>
+        <span>Node.js</span><span class="sep">✦</span>
+        <span>Three.js</span><span class="sep">✦</span>
+        <span>Figma</span><span class="sep">✦</span>
+        <span>CSS Motion</span><span class="sep">✦</span>
+        <span>WebGL</span><span class="sep">✦</span>
+        <span>UI Design</span><span class="sep">✦</span>
+        <span>React</span><span class="sep">✦</span>
+        <span>TypeScript</span><span class="sep">✦</span>
+        <span>Node.js</span><span class="sep">✦</span>
+        <span>Three.js</span><span class="sep">✦</span>
+        <span>Figma</span><span class="sep">✦</span>
+        <span>CSS Motion</span><span class="sep">✦</span>
+        <span>WebGL</span><span class="sep">✦</span>
+        <span>UI Design</span><span class="sep">✦</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== WORK ======== -->
+  <div class="page" id="page-work">
+    <div class="page-inner">
+      <div class="section-tag anim">Selected Work</div>
+      <h2 class="section-heading anim">Projects I've<br>built with care.</h2>
+      <div class="projects-list">
+        <div class="proj-row anim">
+          <span class="proj-num">01</span>
+          <div>
+            <div class="proj-title">Nebula App</div>
+            <div class="proj-meta">2025 · Web Application</div>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">React</span>
+            <span class="proj-tag">UI/UX</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+        <div class="proj-row anim">
+          <span class="proj-num">02</span>
+          <div>
+            <div class="proj-title">Flow Dashboard</div>
+            <div class="proj-meta">2025 · SaaS Product</div>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Frontend</span>
+            <span class="proj-tag">Data Viz</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+        <div class="proj-row anim">
+          <span class="proj-num">03</span>
+          <div>
+            <div class="proj-title">Synth Studio</div>
+            <div class="proj-meta">2024 · Creative Dev</div>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">WebGL</span>
+            <span class="proj-tag">Audio</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+        <div class="proj-row anim">
+          <span class="proj-num">04</span>
+          <div>
+            <div class="proj-title">Monochrome Identity</div>
+            <div class="proj-meta">2024 · Branding</div>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Design</span>
+            <span class="proj-tag">Identity</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+        <div class="proj-row anim">
+          <span class="proj-num">05</span>
+          <div>
+            <div class="proj-title">Ether Protocol</div>
+            <div class="proj-meta">2024 · Landing Page</div>
+          </div>
+          <div class="proj-tags">
+            <span class="proj-tag">Motion</span>
+            <span class="proj-tag">GSAP</span>
+            <span class="proj-arrow">↗</span>
+          </div>
+        </div>
+      </div>
+      <div class="page-footer anim">
+        <span>© 2026 YAN5Q</span>
+        <div class="footer-links">
+          <a href="#">GitHub</a>
+          <a href="#">Twitter</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== ABOUT ======== -->
+  <div class="page" id="page-about">
+    <div class="page-inner">
+      <div class="section-tag anim">About</div>
+      <h2 class="section-heading anim">Craft. Motion.<br>Details.</h2>
+      <div class="about-layout">
+        <div class="about-text anim">
+          <p>
+            I'm a <strong>developer and designer</strong> obsessed with the
+            intersection of engineering and aesthetics. Great software should
+            be technically sound <em>and</em> visually considered.
+          </p>
+          <p style="margin-top:16px;">
+            My work spans frontend architecture, interaction design, and
+            generative visuals. I care about motion, typography, and the
+            details most people don't notice — until they're missing.
+          </p>
+          <p style="margin-top:16px;">
+            Currently taking on <strong>freelance projects</strong> and
+            interesting collaborations.
+          </p>
+          <div style="margin-top:28px;">
+            <div class="skills-wrap">
+              <span class="skill-chip">TypeScript</span>
+              <span class="skill-chip">React</span>
+              <span class="skill-chip">Node.js</span>
+              <span class="skill-chip">WebGL</span>
+              <span class="skill-chip">Figma</span>
+              <span class="skill-chip">CSS</span>
+              <span class="skill-chip">Motion</span>
+              <span class="skill-chip">GSAP</span>
             </div>
-        </nav>
-        <main>
-            <section class="horni-veci">
-                <div class="preziti">
-                    <p>PREZITI</p>
-                </div>
-                <div class="kyberzbrane">
-                    <p>KYBERZBRANE</p>
-                </div>
-                <div class="sitovevalky">
-                    <p>SITOVE VALKY</p>
-                </div>
-                <div class="digitalniutiopie">
-                    <p>DIGITALNI UTOPIE</p>
-                </div>
-            </section>
-            <img src="https://api.ssps.cajthaml.eu/file/69335fb128ac5f259ab1763a" alt="cyberdoba" class="cyberdoba-image" />
-            <aside class="img-footer">
-                <p>2126 © CyberCorp - Vsechna prava zasifrovana</p>
-                <!-- copyright symbol je proste option + G na macu takze jsem ho nikde nehledal -->
-            </aside>
-            <article class="digitalninoc">
-                <h1>DIGITALNI NOC</h1>
-                <hr />
-                <p>
-                    V roce 2162 se svet rozdelil na osvicene megamesta a ruzne tyhle veci, pisu tady nahodny text, jelikoz nechci porad vyuzivat lorem ipsum, ale vidim to tak, ze misto kopirovani lorem ipsum proste zacnu psat co si z nej pamatuji. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Vic si nepamatuji <br />
-                    <br />
-                    V roce 2162 se svet rozdelil na osvicene megamesta a ruzne tyhle veci, pisu tady nahodny text, jelikoz nechci porad vyuzivat lorem ipsum, ale vidim to tak, ze misto kopirovani lorem ipsum proste zacnu psat co si z nej pamatuji. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Vic si nepamatuji <br />
-                    <br />
-                    V roce 2162 se svet rozdelil na osvicene megamesta a ruzne tyhle veci, pisu tady nahodny text, jelikoz nechci porad vyuzivat lorem ipsum, ale vidim to tak, ze misto kopirovani lorem ipsum proste zacnu psat co si z nej pamatuji. Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quos. Vic si nepamatuji <br />
-                    <br />
-                </p>
-            </article>
-            <section class="feature-cards">
-                <div class="feature-card blue">
-                    <div class="feature-icon">
-                        <i class="fas fa-robot"></i>
-                    </div>
-                    <h3 class="feature-title">AI ROZVOJ</h3>
-                    <p class="feature-description">Kyberumelci posouvaji hranice kreativity ve spojeni s umelou inteligenci.</p>
-                </div>
-                <div class="feature-card green">
-                    <div class="feature-icon">
-                        <i class="fas fa-key"></i>
-                    </div>
-                    <h3 class="feature-title">BEZPECNOST</h3>
-                    <p class="feature-description">Data jsou menou. Vase soukromi? Iluze v rukou megakorporaci.</p>
-                </div>
-                <div class="feature-card blue">
-                    <div class="feature-icon">
-                        <i class="fas fa-vr-cardboard"></i>
-                    </div>
-                    <h3 class="feature-title">BUDOUCNOST</h3>
-                    <p class="feature-description">Nova era zacina ve virtualnim svete - realita ztraci vyznam.</p>
-                </div>
-                <div class="feature-card green">
-                    <div class="feature-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3 class="feature-title">KYBERSITE</h3>
-                    <p class="feature-description">Pripojte se. Budte soucasti boje za svobodu na darknetu.</p>
-                </div>
-            </section>
-            <article class="quote">
-                <p class="quote-text">“Vsechno je data. Nezalezi na tom, co je skutecne.”</p>
-                <p class="quote-author">- CyberProphet</p>
-            </article>
-        </main>
-        <footer>
-            <div class="footer-onas">
-                <h2>O nas</h2>
-                <p>CyberCorp je nejvetsi sitova komunita, ktera propojuje mysl a budoucnost.</p>
+          </div>
+        </div>
+        <div class="anim">
+          <div class="tilt-card">
+            <div class="card-label">Details</div>
+            <div class="stat-list">
+              <div class="stat-row">
+                <span class="stat-key">Location</span>
+                <span class="stat-val">Prague, CZ</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-key">Experience</span>
+                <span class="stat-val">3+ years</span>
+              </div>
+              <div class="stat-row">
+                <span class="stat-key">Languages</span>
+                <span class="stat-val">EN / CZ</span>
+              </div>
+              <div class="stat-row" style="border:none; padding:0;">
+                <span class="stat-key">Focus</span>
+                <span class="stat-val">Web / UI</span>
+              </div>
             </div>
-            <div class="footer-kontakt">
-                <h2>Kontakt</h2>
-                <p>info@cybercorp.net</p>
-                <p>+420 284 016 666</p>
+          </div>
+          <div class="tilt-card tilt-card-2">
+            <div class="card-label">Status</div>
+            <div class="availability-text">
+              <span class="avail-dot"></span>
+              Open to freelance
             </div>
-            <div class="footer-info">
-                <h2>Informace</h2>
-                <p class="footer-info-item">PODPORA</p>
-                <p class="footer-info-item">TECHNOLOGIE</p>
-                <p class="footer-info-item">HACKERSKA AKADEMIE</p>
-                <p>2126 © CyberCorp</p>
-            </div>
-        </footer>
-    </body>
+          </div>
+        </div>
+      </div>
+      <div class="page-footer anim">
+        <span>© 2026 YAN5Q</span>
+        <div class="footer-links">
+          <a href="#">GitHub</a>
+          <a href="#">Twitter</a>
+          <a href="#">LinkedIn</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======== CONTACT ======== -->
+  <div class="page" id="page-contact">
+    <div class="page-inner">
+      <div class="section-tag anim">Get in touch</div>
+      <h2 class="contact-big anim">
+        Let's build<br><em>something</em><br>great.
+      </h2>
+      <div class="contact-cards">
+        <a href="mailto:hello@yan5q.dev" class="contact-card anim">
+          <div class="contact-card-left">
+            <span class="contact-card-label">Email</span>
+            <span class="contact-card-value">hello@yan5q.dev</span>
+          </div>
+          <span class="contact-arrow">↗</span>
+        </a>
+        <a href="#" class="contact-card anim" target="_blank" style="background: var(--text); color: var(--bg);">
+          <div class="contact-card-left">
+            <span class="contact-card-label" style="opacity:0.5;">Availability</span>
+            <span class="contact-card-value">Open for work ✦</span>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+      </div>
+      <div class="social-row anim">
+        <a href="#" class="social-btn" target="_blank">GitHub</a>
+        <a href="#" class="social-btn" target="_blank">Twitter</a>
+        <a href="#" class="social-btn" target="_blank">LinkedIn</a>
+        <a href="#" class="social-btn" target="_blank">Dribbble</a>
+      </div>
+      <div class="page-footer anim">
+        <span>© 2026 YAN5Q</span>
+        <span>Prague — UTC+1</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ======== CURSOR ======== */
+    const dot = document.getElementById('cursorDot');
+    document.addEventListener('mousemove', e => {
+      dot.style.left = e.clientX + 'px';
+      dot.style.top  = e.clientY + 'px';
+    });
+    document.querySelectorAll('a, button, [data-nav], .proj-row, .skill-chip, .tilt-card').forEach(el => {
+      el.addEventListener('mouseenter', () => dot.classList.add('big'));
+      el.addEventListener('mouseleave', () => dot.classList.remove('big'));
+    });
+
+    /* ======== ROUTING ======== */
+    const pages = ['home','work','about','contact'];
+    const curtain   = document.getElementById('curtain');
+    const indicator = document.getElementById('pageIndicator');
+    let cur = 'home', busy = false;
+
+    function go(target) {
+      if (target === cur || busy) return;
+      busy = true;
+      curtain.className = 'curtain in';
+      setTimeout(() => {
+        document.getElementById('page-' + cur).classList.remove('active');
+        document.querySelectorAll('#page-' + cur + ' .anim').forEach(el => {
+          el.style.animation = 'none';
+          void el.offsetHeight;
+          el.style.animation = '';
+        });
+        cur = target;
+        indicator.textContent = String(pages.indexOf(target)+1).padStart(2,'0') + '/04';
+        document.title = 'YAN5Q — ' + target[0].toUpperCase() + target.slice(1);
+        const pg = document.getElementById('page-' + target);
+        pg.scrollTop = 0;
+        pg.classList.add('active');
+        curtain.className = 'curtain out';
+        setTimeout(() => { curtain.className = 'curtain'; busy = false; }, 480);
+      }, 460);
+    }
+
+    document.querySelectorAll('[data-nav]').forEach(el => {
+      el.addEventListener('click', () => {
+        const t = el.getAttribute('data-nav');
+        const menuOpen = overlay.classList.contains('open');
+        if (menuOpen) closeMenu();
+        setTimeout(() => go(t), menuOpen ? 260 : 0);
+      });
+    });
+
+    document.addEventListener('keydown', e => {
+      if (busy || overlay.classList.contains('open')) return;
+      const i = pages.indexOf(cur);
+      if ((e.key === 'ArrowRight' || e.key === 'ArrowDown') && i < pages.length-1) go(pages[i+1]);
+      if ((e.key === 'ArrowLeft'  || e.key === 'ArrowUp')   && i > 0) go(pages[i-1]);
+    });
+
+    /* ======== MENU ======== */
+    const hamburger = document.getElementById('hamburger');
+    const overlay   = document.getElementById('menuOverlay');
+    hamburger.addEventListener('click', () => overlay.classList.contains('open') ? closeMenu() : openMenu());
+    function openMenu()  { hamburger.classList.add('active');    overlay.classList.add('open'); }
+    function closeMenu() { hamburger.classList.remove('active'); overlay.classList.remove('open'); }
+
+    /* ======== THEME (light/dark toggle keeping brutalist feel) ======== */
+    /* In neubrutalism, dark mode = inverted */
+    const themeBtn  = document.getElementById('themeToggle');
+    const themeIcon = themeBtn;
+    let dark = false;
+    const saved = localStorage.getItem('nb-theme');
+    if (saved === 'dark') applyDark(true, false);
+
+    themeBtn.addEventListener('click', () => applyDark(!dark, true));
+
+    function applyDark(on, save) {
+      dark = on;
+      if (on) {
+        document.body.style.setProperty('--bg', '#0f0f0f');
+        document.body.style.setProperty('--text', '#f5f0e8');
+        document.body.style.setProperty('--border', '#f5f0e8');
+        document.body.style.setProperty('--shadow', '5px 5px 0px #f5f0e8');
+        document.body.style.setProperty('--shadow-lg', '8px 8px 0px #f5f0e8');
+        document.body.style.setProperty('--shadow-xl', '12px 12px 0px #f5f0e8');
+        themeBtn.textContent = '☀';
+      } else {
+        document.body.style.removeProperty('--bg');
+        document.body.style.removeProperty('--text');
+        document.body.style.removeProperty('--border');
+        document.body.style.removeProperty('--shadow');
+        document.body.style.removeProperty('--shadow-lg');
+        document.body.style.removeProperty('--shadow-xl');
+        themeBtn.textContent = '☽';
+      }
+      if (save) localStorage.setItem('nb-theme', on ? 'dark' : 'light');
+    }
+  </script>
+</body>
 </html>
